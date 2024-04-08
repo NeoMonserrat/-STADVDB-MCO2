@@ -8,7 +8,7 @@ const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'root123',
-    database: 'crud'
+    database: 'seriousmd'
 });
 
 db.connect(function(err) {
@@ -25,13 +25,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.get('/',(req, res) => {
-    let sql = "SELECT * FROM users";
+    let sql = "SELECT * FROM appointments";
     let query = db.query(sql, (err,rows) => {
         console.log(rows);
         if(err) throw err;
         res.render('index', {
-            title: 'TRY',
-            users : rows
+            title: 'SeriousMD Database',
+            appointments : rows
         });
     });
 });

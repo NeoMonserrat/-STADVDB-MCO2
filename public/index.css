@@ -6,7 +6,7 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1500px;
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
@@ -39,11 +39,42 @@ body {
     background-color: #f1f1f1;
 }
 
-.table td a {
-    color: #e74c3c;
+.add_button,
+.table .edit_button,
+.table .delete_button {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
     text-decoration: none;
+    text-align: center;
 }
 
-.table td a:hover {
-    text-decoration: underline;
+.add_button {
+    color: white;
+    background-color: #03dd03;
 }
+
+.table .edit_button {
+    color: white;
+    background-color: blue;
+}
+
+.table .delete_button {
+    color: white;
+    background-color: red;
+}
+
+.add_button:hover {
+    background-color: #028002;
+}
+
+.table .edit_button:hover {
+    background-color: #020a72; /* Darker color for edit button */
+}
+
+.table .delete_button:hover {
+    background-color: #700f04; /* Darker color for delete button */
+}
+

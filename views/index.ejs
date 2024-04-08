@@ -9,25 +9,39 @@
 <body>
     <div class="container">
         <h1>Medical Appointments</h1>
+        <a class="add_button" href="">Add Appointment</a>
         <table class="table">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone Number</th>
+                    <th>Patient ID</th>
+                    <th>Clinic ID</th>
+                    <th>Doctor ID</th>
+                    <th>Appointment ID</th>
+                    <th>status</th>
+                    <th>TimeQueued</th>
+                    <th>QueueDate</th>
+                    <th>StartTime</th>
+                    <th>EndTime</th>
+                    <th>type</th>
+                    <th>Virtual</th>
                     <th>Action</th>
                 </tr>
             </thead>
             
             <tbody>
-                <% users.forEach(function(user){ %>
+                <% appointments.forEach(function(appointments){ %>
                     <tr>
-                        <td><%= user.name %></td>
-                        <td><%= user.email %></td>
-                        <td><%= user.phone_no %></td>
+                        <td><%= appointments.pxid %></td>
+                        <td><%= appointments.clinicid %></td>
+                        <td><%= appointments.doctorid %></td>
+                        <td><%= appointments.apptid %></td>
+                        <td><%= appointments.status %></td>
+                        <td><%= appointments.TimeQueued %></td>
+                        <td><%= appointments.type %></td>
+                        <td><%= appointments.Virtual %></td>
                         <td>
-                            <a class=""href="edit/<%= user.id %>">Edit</a>
-                            <a href="delete/<%= user.id %>">Delete</a>
+                            <a class="edit_button" href="edit/<%= appointments.apptid %>">Edit</a>
+                            <a class="delete_button" href="delete/<%= appointments.apptid %>">Delete</a>
                         </td>
                     </tr>
                 <% }); %>
