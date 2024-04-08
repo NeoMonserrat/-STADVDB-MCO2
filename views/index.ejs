@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link href="index.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Medical Appointments</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <% users.forEach(function(user){ %>
+                    <tr>
+                        <td><%= user.name %></td>
+                        <td><%= user.email %></td>
+                        <td><%= user.phone_no %></td>
+                        <td>
+                            <a class=""href="edit/<%= user.id %>">Edit</a>
+                            <a href="delete/<%= user.id %>">Delete</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+    
+</body>
+</html>
