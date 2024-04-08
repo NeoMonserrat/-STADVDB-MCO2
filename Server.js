@@ -36,6 +36,21 @@ app.get('/',(req, res) => {
     });
 });
 
+app.get('/add', (req, res) => {
+    res.render('add', {
+        title: 'Add Appointment'
+    });
+});
+
+app.get('/edit/:apptid', (req, res) => {
+    const apptId = req.params.apptid;
+    res.render('edit', {
+        title: 'Edit Appointment',
+        apptId: apptId
+    });
+});
+
+
 app.listen(3000, () => {
     console.log("Server is running on port 3000");
 });

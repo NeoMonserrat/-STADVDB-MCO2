@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Appointment</title>
+    <link href="edit.css" rel="stylesheet">
+</head>
+<body>
+    <form action="/edit/:apptid" method="POST">
+        <h1>Edit Appointment</h1>
+
+        <label for="pxid">Patient ID:</label>
+        <input type="text" id="pxid" name="pxid" required><br>
+    
+        <label for="clinicid">Clinic ID:</label>
+        <input type="text" id="clinicid" name="clinicid" required><br>
+    
+        <label for="doctorid">Doctor ID:</label>
+        <input type="text" id="doctorid" name="doctorid" required><br>
+    
+        <label for="apptid">Appointment ID:</label>
+        <input type="text" id="apptid" name="apptid" required><br>
+    
+        <label for="status">Status:</label>
+        <input type="text" id="status" name="status" required><br>
+    
+        <label for="type">Type:</label>
+        <input type="text" id="type" name="type" required><br>
+    
+        <label for="Virtual">Virtual:</label>
+        <input type="text" id="Virtual" name="Virtual" required><br>
+    
+        <input type="submit" value="Submit">
+    </form>    
+</body>
+</html>
