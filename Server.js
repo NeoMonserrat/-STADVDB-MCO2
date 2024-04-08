@@ -24,6 +24,9 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+
+
+// Fetching Data from Database
 app.get('/',(req, res) => {
     let sql = "SELECT * FROM appointments";
     let query = db.query(sql, (err,rows) => {
@@ -36,12 +39,14 @@ app.get('/',(req, res) => {
     });
 });
 
+// Adding data to Database
 app.get('/add', (req, res) => {
     res.render('add', {
         title: 'Add Appointment'
     });
 });
 
+// Edit data from Database
 app.get('/edit/:apptid', (req, res) => {
     const apptId = req.params.apptid;
     res.render('edit', {
@@ -49,6 +54,26 @@ app.get('/edit/:apptid', (req, res) => {
         apptId: apptId
     });
 });
+
+// Search data from Database(using apptid)
+/*
+app.get('/search-apptid', (req, res) => {
+    const query = req.query.query;
+    const sql = 'SELECT * FROM appointments WHERE apptid = ?';
+
+    connection.query(sql, [query], (err, results) => {
+        if (err) {
+            console.error('Error executing query: ' + err.stack);
+            res.status(500).send('Internal Server Error');
+            return;
+        }
+
+        // Pass the results to the view
+        res.render('index', { appointments: results });
+    });
+});
+*/
+
 
 
 app.listen(3000, () => {

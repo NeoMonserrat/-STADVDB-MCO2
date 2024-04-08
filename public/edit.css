@@ -5,7 +5,6 @@ body {
     padding: 0;
 }
 
-/* Form container styles */
 form {
     max-width: 400px;
     margin: 20px auto;
@@ -15,14 +14,12 @@ form {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Label styles */
 label {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
 }
 
-/* Input styles */
 input[type="text"] {
     width: 100%;
     padding: 8px;
@@ -32,7 +29,6 @@ input[type="text"] {
     border-radius: 4px;
 }
 
-/* Submit button styles */
 input[type="submit"] {
     width: 100%;
     padding: 10px;
@@ -44,7 +40,6 @@ input[type="submit"] {
     cursor: pointer;
 }
 
-/* Submit button hover effect */
 input[type="submit"]:hover {
     background-color: #45a049;
 }

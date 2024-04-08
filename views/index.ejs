@@ -9,7 +9,16 @@
 <body>
     <div class="container">
         <h1>SeriousMD Database</h1>
-        <a class="add_button" href="/add">Add Appointment</a>
+        
+        <div class="top-panel">
+            <a class="add_button" href="/add">Add Appointment</a>
+
+            <form action="/search" method="GET">
+                <input type="text" name="query" placeholder="Search...">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        
         <table class="table">
             <thead>
                 <tr>
@@ -17,26 +26,26 @@
                     <th>Clinic ID</th>
                     <th>Doctor ID</th>
                     <th>Appointment ID</th>
-                    <th>status</th>
-                    <th>type</th>
-                    <th>virtual</th>
+                    <th>Status</th>
+                    <th>Type</th>
+                    <th>Virtual</th>
                     <th>Action</th>
                 </tr>
             </thead>
             
             <tbody>
-                <% appointments.forEach(function(appointments){ %>
+                <% appointments.forEach(function(appointment){ %>
                     <tr>
-                        <td><%= appointments.pxid %></td>
-                        <td><%= appointments.clinicid %></td>
-                        <td><%= appointments.doctorid %></td>
-                        <td><%= appointments.apptid %></td>
-                        <td><%= appointments.status %></td>
-                        <td><%= appointments.type %></td>
-                        <td><%= appointments.Virtual %></td>
+                        <td><%= appointment.pxid %></td>
+                        <td><%= appointment.clinicid %></td>
+                        <td><%= appointment.doctorid %></td>
+                        <td><%= appointment.apptid %></td>
+                        <td><%= appointment.status %></td>
+                        <td><%= appointment.type %></td>
+                        <td><%= appointment.Virtual %></td>
                         <td>
-                            <a class="edit_button" href="edit/<%= appointments.apptid %>">Edit</a>
-                            <a class="delete_button" href="delete/<%= appointments.apptid %>">Delete</a>
+                            <a class="edit_button" href="/edit/<%= appointment.apptid %>">Edit</a>
+                            <a class="delete_button" href="/delete/<%= appointment.apptid %>">Delete</a>
                         </td>
                     </tr>
                 <% }); %>
