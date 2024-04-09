@@ -13,7 +13,7 @@
             background-color: #f4f4f4;
         }
         .container {
-            max-width: 800px;
+            width: 80%;
             margin: 20px auto;
             padding: 20px;
             background-color: #fff;
@@ -23,48 +23,52 @@
         h1 {
             text-align: center;
             margin-bottom: 20px;
+            font-size: 24px;
             color: #333;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-        th, td {
+        .appointment {
             border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
         }
-        th {
-            background-color: #f2f2f2;
+        .appointment p {
+            margin: 5px 0;
+        }
+        .appointment h1 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .appointment-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .appointment-info strong {
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Appointment Report</h1>
-        <table>
-            <tr>
-                <th>Appointment ID</th>
-                <th>Patient ID</th>
-                <th>Clinic ID</th>
-                <th>Doctor ID</th>
-                <th>Status</th>
-                <th>Type</th>
-                <th>Virtual</th>
-            </tr>
-            <% appointments.forEach(appointment => { %>
-                <tr>
-                    <td><%= appointment.apptid %></td>
-                    <td><%= appointment.pxid %></td>
-                    <td><%= appointment.clinicid %></td>
-                    <td><%= appointment.doctorid %></td>
-                    <td><%= appointment.status %></td>
-                    <td><%= appointment.type %></td>
-                    <td><%= appointment.Virtual %></td>
-                </tr>
-            <% }); %>
-        </table>
+        <h1>SeriousMD Database</h1>
+        <% appointments.forEach(appointment => { %>
+        <div class="appointment">
+            <div class="appointment-info">
+                <h1>Appointment <%= appointment.apptid %> Record</h1>
+                <p><strong>Status:</strong> <%= appointment.status %></p>
+            </div>
+            <div class="appointment-details">
+                <p><strong>Patient ID:</strong> <%= appointment.pxid %></p>
+                <p><strong>Clinic ID:</strong> <%= appointment.clinicid %></p>
+                <p><strong>Doctor ID:</strong> <%= appointment.doctorid %></p>
+                <p><strong>Type:</strong> <%= appointment.type %></p>
+                <p><strong>Virtual:</strong> <%= appointment.Virtual %></p>
+            </div>
+        </div>
+        <% }); %>
     </div>
 </body>
 </html>
