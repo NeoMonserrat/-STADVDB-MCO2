@@ -45,7 +45,7 @@
                         <td><%= appointment.Virtual %></td>
                         <td>
                             <a class="edit_button" href="/edit/<%= appointment.apptid %>">Edit</a>
-                            <button class="delete_button" data-apptid="<%= appointment.apptid %>">Delete</button>
+                            <a class="delete_button" href="/delete/<%= appointment.apptid %>">Delete</a>
                         </td>
                     </tr>
                 <% }); %>

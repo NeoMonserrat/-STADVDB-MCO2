@@ -82,19 +82,19 @@ app.get('/edit/:apptid', (req, res) => {
 });
 
 // Delete data from Database
-app.post('/delete', (req, res) => {
-    const apptId = req.body.apptid;
+app.get('/delete/:apptid', (req, res) => {
+    const apptid = req.params.apptid; 
     const sql = 'DELETE FROM appointments WHERE apptid = ?';
 
-    db.query(sql, [apptId], (err, result) => {
+    db.query(sql, [apptid], (err, result) => {
         if (err) {
             console.error('Error executing query: ' + err.stack);
             res.status(500).send('Internal Server Error');
-            return;
+            return; 
         }
 
         console.log('Appointment deleted successfully');
-        res.redirect('/');
+        res.redirect('back'); 
     });
 });
 
