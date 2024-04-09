@@ -47,6 +47,14 @@ body {
     background-color: #f1f1f1;
 }
 
+.search {
+    padding: 5px 10px;
+    margin: 0 5px;
+    border: 1px solid black;
+    border-radius: 3px;
+    text-decoration: none;
+}
+
 .add_button,
 .table .edit_button,
 .table .delete_button {

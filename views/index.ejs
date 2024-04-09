@@ -13,10 +13,10 @@
         <div class="top-panel">
             <a class="add_button" href="/add">Add Appointment</a>
 
-            <form action="/search" method="GET">
-                <input type="text" name="query" placeholder="Search...">
+            <form action="/search-apptid" method="GET">
+                <input type="text" class="search" name="query" placeholder="Search Appointment ID">
                 <button type="submit">Search</button>
-            </form>
+            </form>            
         </div>
         
         <table class="table">
@@ -45,7 +45,7 @@
                         <td><%= appointment.Virtual %></td>
                         <td>
                             <a class="edit_button" href="/edit/<%= appointment.apptid %>">Edit</a>
-                            <a class="delete_button" href="/delete/<%= appointment.apptid %>">Delete</a>
+                            <button class="delete_button" data-apptid="<%= appointment.apptid %>">Delete</button>
                         </td>
                     </tr>
                 <% }); %>

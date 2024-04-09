@@ -1,6 +1,8 @@
 const express = require("express");
 const mysql = require("mysql");
 const bodyParser = require("body-parser");
+//const addRouter = require("./routes/addRoute");
+//const editRouter = require("./routes/editRoute");
 
 const app = express();
 
@@ -24,17 +26,22 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-
+//app.use('/add', addRouter);
+//app.use('/edit', editRouter);
 
 // Fetching Data from Database
-app.get('/',(req, res) => {
+app.get('/', (req, res) => {
     let sql = "SELECT * FROM appointments";
-    let query = db.query(sql, (err,rows) => {
+    let query = db.query(sql, (err, rows) => {
+        if (err) {
+            console.error('Error executing query: ' + err.stack);
+            res.status(500).send('Internal Server Error');
+            return;
+        }
         console.log(rows);
-        if(err) throw err;
         res.render('index', {
             title: 'SeriousMD Database',
-            appointments : rows
+            appointments: rows
         });
     });
 });
@@ -43,6 +50,25 @@ app.get('/',(req, res) => {
 app.get('/add', (req, res) => {
     res.render('add', {
         title: 'Add Appointment'
+    });
+});
+
+// Handle form submission
+app.post('/add', (req, res) => {
+    const { pxid, clinicid, doctorid, apptid, status, type, isVirtual } = req.body;
+    const sql = 'INSERT INTO appointments (pxid, clinicid, doctorid, apptid, status, type, isVirtual) VALUES (?, ?, ?, ?, ?, ?, ?)';
+
+    const values = [pxid, clinicid, doctorid, apptid, status, type, isVirtual];
+
+    db.query(sql, values, (err, result) => {
+        if (err) {
+            console.error('Error executing query: ' + err.stack);
+            res.status(500).send('Internal Server Error');
+            return;
+        }
+
+        console.log('Appointment added successfully');
+        res.redirect('/');
     });
 });
 
@@ -55,28 +81,40 @@ app.get('/edit/:apptid', (req, res) => {
     });
 });
 
-// Search data from Database(using apptid)
-/*
-app.get('/search-apptid', (req, res) => {
-    const query = req.query.query;
-    const sql = 'SELECT * FROM appointments WHERE apptid = ?';
+// Delete data from Database
+app.post('/delete', (req, res) => {
+    const apptId = req.body.apptid;
+    const sql = 'DELETE FROM appointments WHERE apptid = ?';
 
-    connection.query(sql, [query], (err, results) => {
+    db.query(sql, [apptId], (err, result) => {
         if (err) {
             console.error('Error executing query: ' + err.stack);
             res.status(500).send('Internal Server Error');
             return;
         }
 
-        // Pass the results to the view
+        console.log('Appointment deleted successfully');
+        res.redirect('/');
+    });
+});
+
+
+// Search data from Database(using apptid)
+app.get('/search-apptid', (req, res) => {
+    const query = req.query.query;
+    const sql = 'SELECT * FROM appointments WHERE apptid = ?';
+
+    db.query(sql, [query], (err, results) => {
+        if (err) {
+            console.error('Error executing query: ' + err.stack);
+            res.status(500).send('Internal Server Error');
+            return;
+        }
+
         res.render('index', { appointments: results });
     });
 });
-*/
-
-
 
 app.listen(3000, () => {
     console.log("Server is running on port 3000");
 });
-
