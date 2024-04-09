@@ -22,10 +22,10 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th>Appointment ID</th>
                     <th>Patient ID</th>
                     <th>Clinic ID</th>
                     <th>Doctor ID</th>
-                    <th>Appointment ID</th>
                     <th>Status</th>
                     <th>Type</th>
                     <th>Virtual</th>
@@ -36,10 +36,10 @@
             <tbody>
                 <% appointments.forEach(function(appointment){ %>
                     <tr>
+                        <td><a href="/view/<%= appointment.apptid %>"><%= appointment.apptid %></a></td>
                         <td><%= appointment.pxid %></td>
                         <td><%= appointment.clinicid %></td>
                         <td><%= appointment.doctorid %></td>
-                        <td><%= appointment.apptid %></td>
                         <td><%= appointment.status %></td>
                         <td><%= appointment.type %></td>
                         <td><%= appointment.Virtual %></td>

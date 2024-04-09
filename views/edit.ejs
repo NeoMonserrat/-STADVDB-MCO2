@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Appointment</title>
+    <title>Edit Appointment</title>
     <!-- <link href="add.css" rel="stylesheet"> -->
     <style>
         body {
@@ -50,31 +50,31 @@
     </style>
 </head>
 <body>
-    <form action="/edit/:apptid" method="POST">
+    <form action="/edit/<%= appointment.apptid %>" method="POST">
         <h1>Edit Appointment</h1>
         
         <label for="pxid">Patient ID:</label>
-        <input type="text" id="pxid" name="pxid" required><br>
+        <input type="text" id="pxid" name="pxid" value="<%= appointment.pxid %>" required><br>
     
         <label for="clinicid">Clinic ID:</label>
-        <input type="text" id="clinicid" name="clinicid" required><br>
+        <input type="text" id="clinicid" name="clinicid" value="<%= appointment.clinicid %>" required><br>
     
         <label for="doctorid">Doctor ID:</label>
-        <input type="text" id="doctorid" name="doctorid" required><br>
+        <input type="text" id="doctorid" name="doctorid" value="<%= appointment.doctorid %>" required><br>
     
         <label for="apptid">Appointment ID:</label>
-        <input type="text" id="apptid" name="apptid" required><br>
+        <input type="text" id="apptid" name="apptid" value="<%= appointment.apptid %>" required><br>
     
         <label for="status">Status:</label>
-        <input type="text" id="status" name="status" required><br>
+        <input type="text" id="status" name="status" value="<%= appointment.status %>" required><br>
     
         <label for="type">Type:</label>
-        <input type="text" id="type" name="type" required><br>
+        <input type="text" id="type" name="type" value="<%= appointment.type %>" required><br>
     
         <label for="Virtual">Virtual:</label>
-        <input type="text" id="Virtual" name="Virtual" required><br>
+        <input type="text" id="isVirtual" name="isVirtual" value="<%= appointment.isVirtual %>" required><br>
     
-        <input type="submit" value="Submit">
+        <input type="submit" value="Save">
     </form>    
 </body>
 </html>

@@ -1,22 +1,24 @@
-const express = require("express");
-const bodyParser = require("body-parser");
+const express = require('express');
+const router = express.Router();
+const mysql = require("mysql");
 
-const addRouter = express.Router();
+const db = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'root123',
+    database: 'seriousmd'
+});
 
-addRouter.use(bodyParser.urlencoded({ extended: true }));
-
-// Render the add form
-addRouter.get('/', (req, res) => {
+router.get('/', (req, res) => {
     res.render('add', {
         title: 'Add Appointment'
     });
 });
 
-// Handle form submission
-addRouter.post('/', (req, res) => {
-    const { pxid, clinicid, doctorid, apptid, status, type, Virtual } = req.body;
-    const sql = 'INSERT INTO appointments (pxid, clinicid, doctorid, apptid, status, type, Virtual) VALUES (?, ?, ?, ?, ?, ?, ?)';
-    const values = [pxid, clinicid, doctorid, apptid, status, type, Virtual];
+router.post('/', (req, res) => {
+    const { pxid, clinicid, doctorid, apptid, status, type, isVirtual } = req.body;
+    const sql = 'INSERT INTO appointments (pxid, clinicid, doctorid, apptid, status, type, isVirtual) VALUES (?, ?, ?, ?, ?, ?, ?)';
+    const values = [pxid, clinicid, doctorid, apptid, status, type, isVirtual];
 
     db.query(sql, values, (err, result) => {
         if (err) {
@@ -30,4 +32,4 @@ addRouter.post('/', (req, res) => {
     });
 });
 
-module.exports = addRouter;
+module.exports = router;
