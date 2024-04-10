@@ -3,11 +3,12 @@ const router = express.Router();
 const mysql = require("mysql");
 
 const db = mysql.createConnection({
-    host: 'localhost',
+    host: 'ccscloud.dlsu.edu.ph',
+    port: 20012,
     user: 'root',
-    password: 'root123',
-    database: 'smd_appointments'
-});
+    password: 'VDxdc5yWSYNtjv8hXaJ27bP4',
+    database: 'smd_appointments' 
+  });
 
 router.get('/', (req, res) => {
     res.render('add', {

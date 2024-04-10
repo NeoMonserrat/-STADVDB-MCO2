@@ -7,11 +7,12 @@ const editRouter = require("./routes/editRoute");
 const app = express();
 
 const db = mysql.createConnection({
-    host: 'localhost',
+    host: 'ccscloud.dlsu.edu.ph',
+    port: 20012,
     user: 'root',
-    password: 'root123',
-    database: 'smd_appointments'
-});
+    password: 'VDxdc5yWSYNtjv8hXaJ27bP4',
+    database: 'smd_appointments' 
+  });
 
 db.connect(function(err) {
     if (err) {
