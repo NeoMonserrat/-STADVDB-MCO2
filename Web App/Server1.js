@@ -18,6 +18,15 @@ db.connect(function(err) {
         return;
     }
     console.log("connected as id " + db.threadId);
+
+    db.query('SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ', function(err, result) {
+        if (err) {
+            console.error("error setting isolation level: " + err.stack);
+            return;
+        }
+        console.log("Isolation level set to Repeatable Read");
+
+    });
 });
 
 app.set("views", __dirname + "/views");
@@ -37,7 +46,7 @@ app.get('/', (req, res) => {
             return;
         }
         console.log(rows);
-        res.render('index', {
+        res.render('indexV2', {
             title: 'SeriousMD Database',
             appointments: rows
         });
