@@ -1,17 +1,16 @@
 const express = require("express");
 const mysql = require("mysql");
 const bodyParser = require("body-parser");
-const addRouter = require("./routes/addRoute");
-const editRouter = require("./routes/editRoute");
 
 const app = express();
 
 const db = mysql.createConnection({
-    host: 'localhost',
+    host: 'ccscloud.dlsu.edu.ph',
+    port: 20014,
     user: 'root',
-    password: 'root123',
-    database: 'smd_appointments'
-});
+    password: 'VDxdc5yWSYNtjv8hXaJ27bP4',
+    database: 'smd_visayas&mindanao' 
+  });
 
 db.connect(function(err) {
     if (err) {
@@ -25,9 +24,6 @@ app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
-
-app.use('/add', addRouter);
-app.use('/edit', editRouter);
 
 
 
@@ -107,8 +103,8 @@ app.get('/delete/:apptid', (req, res) => {
 
 
 
-app.listen(3000, () => {
-    console.log("Server is running on port 3000");
+app.listen(20014, () => {
+    console.log("Server is running on port 20014");
 });
 
 module.exports = db;

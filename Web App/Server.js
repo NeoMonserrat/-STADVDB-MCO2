@@ -108,8 +108,8 @@ app.get('/delete/:apptid', (req, res) => {
 
 
 
-app.listen(3000, () => {
-    console.log("Server is running on port 3000");
+app.listen(20012, () => {
+    console.log("Server is running on port 20012");
 });
 
 module.exports = db;
