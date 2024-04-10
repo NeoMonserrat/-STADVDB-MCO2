@@ -39,7 +39,7 @@
         .appointment h1 {
             font-size: 20px;
             color: #333;
-            margin-bottom: 10px;
+            margin-bottom: 50px;
         }
         .appointment-info {
             display: flex;
@@ -48,24 +48,29 @@
         }
         .appointment-info strong {
             font-weight: bold;
+            margin-bottom: 20px;
         }
+        .appointment-details p {
+            margin-bottom: 20px;
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>SeriousMD Database</h1>
+        <h1>SeriousMD Database Record</h1>
         <% appointments.forEach(appointment => { %>
         <div class="appointment">
             <div class="appointment-info">
-                <h1>Appointment <%= appointment.apptid %> Record</h1>
+                <h1>Appointment #<%= appointment.apptid %></h1>
                 <p><strong>Status:</strong> <%= appointment.status %></p>
             </div>
             <div class="appointment-details">
-                <p><strong>Patient ID:</strong> <%= appointment.pxid %></p>
-                <p><strong>Clinic ID:</strong> <%= appointment.clinicid %></p>
-                <p><strong>Doctor ID:</strong> <%= appointment.doctorid %></p>
+                <p><strong>Patient:</strong> <%= appointment.patient %></p>
+                <p><strong>Clinic:</strong> <%= appointment.clinic %></p>
+                <p><strong>Doctor:</strong> <%= appointment.doctor %></p>
                 <p><strong>Type:</strong> <%= appointment.type %></p>
-                <p><strong>Virtual:</strong> <%= appointment.Virtual %></p>
+                <p><strong>Time:</strong> <%= appointment.time %></p>
             </div>
         </div>
         <% }); %>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Appointment</title>
+    <link href="add.css" rel="stylesheet">
+</head>
+<body>
+    <form action="/add" method="POST">
+        <h1>Add Appointment</h1>
+
+        <label for="apptid">Appointment ID:</label>
+        <input type="text" id="apptid" name="apptid" required><br>
+
+        <label for="pxid">Patient ID:</label>
+        <input type="text" id="patient" name="patient" required><br>
+    
+        <label for="clinicid">Clinic ID:</label>
+        <input type="text" id="clinic" name="clinic" required><br>
+    
+        <label for="doctorid">Doctor ID:</label>
+        <input type="text" id="doctor" name="doctor" required><br>
+    
+        <label for="type">Type:</label>
+        <input type="text" id="type" name="type" required><br>
+    
+        <label for="datetime">Date and Time:</label>
+        <input type="datetime-local" id="time" name="time" required><br>
+
+    
+        <input type="submit" value="Submit">
+    </form>    
+</body>
+</html>

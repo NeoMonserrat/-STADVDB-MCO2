@@ -6,7 +6,7 @@ const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'root123',
-    database: 'seriousmd'
+    database: 'smd_appointments'
 });
 
 router.get('/:apptid', (req, res) => {
@@ -34,10 +34,10 @@ router.get('/:apptid', (req, res) => {
 });
 
 router.post('/:apptid', (req, res) => {
-    const apptId = req.params.apptid;
-    const { pxid, clinicid, doctorid, status, type, isVirtual } = req.body;
-    const sql = 'UPDATE appointments SET pxid = ?, clinicid = ?, doctorid = ?, status = ?, type = ?, isVirtual = ? WHERE apptid = ?';
-    const values = [pxid, clinicid, doctorid, status, type, isVirtual, apptId];
+    const apptIdToUpdate = req.params.apptid; 
+    const { apptid, patient, clinic, doctor, status, type, time } = req.body; 
+    const sql = 'UPDATE appointments SET patient = ?, clinic = ?, doctor = ?, status = ?, type = ?, time = ? WHERE apptid = ?';
+    const values = [patient, clinic, doctor, status, type, time, apptIdToUpdate]; 
 
     db.query(sql, values, (err, result) => {
         if (err) {
@@ -50,5 +50,7 @@ router.post('/:apptid', (req, res) => {
         res.redirect('/');
     });
 });
+
+
 
 module.exports = router;

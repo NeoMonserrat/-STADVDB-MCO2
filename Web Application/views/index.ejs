@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link href="index.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>SeriousMD Appointment Tracking System</h1>
+        
+        <div class="top-panel">
+            <a class="add_button" href="/add">Add Appointment</a>
+
+            <form action="/search-apptid" method="GET">
+                <input type="text" class="search" name="query" placeholder="Search Appointment ID">
+                <button type="submit">Search</button>
+            </form>            
+        </div>
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Appointment ID</th>
+                    <th>Patient</th>
+                    <th>Clinic</th>
+                    <th>Doctor</th>
+                    <th>Status</th>
+                    <th>Type</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <% appointments.forEach(function(appointment){ %>
+                    <tr>
+                        <td><a href="/view/<%= appointment.apptid %>"><%= appointment.apptid %></a></td>
+                        <td><%= appointment.patient %></td>
+                        <td><%= appointment.clinic %></td>
+                        <td><%= appointment.doctor %></td>
+                        <td><%= appointment.status %></td>
+                        <td><%= appointment.type %></td>
+                        <td>
+                            <a class="edit_button" href="/edit/<%= appointment.apptid %>">Edit</a>
+                            <a class="delete_button" href="/delete/<%= appointment.apptid %>">Delete</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+    
+</body>
+</html>

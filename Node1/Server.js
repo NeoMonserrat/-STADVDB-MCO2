@@ -10,7 +10,7 @@ const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'root123',
-    database: 'seriousmd'
+    database: 'smd_appointments'
 });
 
 db.connect(function(err) {

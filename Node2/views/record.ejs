@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Report</title>
+    <link href="record.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        .appointment {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .appointment p {
+            margin: 5px 0;
+        }
+        .appointment h1 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 50px;
+        }
+        .appointment-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .appointment-info strong {
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .appointment-details p {
+            margin-bottom: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SeriousMD Database Record</h1>
+        <% appointments.forEach(appointment => { %>
+        <div class="appointment">
+            <div class="appointment-info">
+                <h1>Appointment #<%= appointment.apptid %></h1>
+                <p><strong>Status:</strong> <%= appointment.status %></p>
+            </div>
+            <div class="appointment-details">
+                <p><strong>Patient:</strong> <%= appointment.patient %></p>
+                <p><strong>Clinic:</strong> <%= appointment.clinic %></p>
+                <p><strong>Doctor:</strong> <%= appointment.doctor %></p>
+                <p><strong>Type:</strong> <%= appointment.type %></p>
+                <p><strong>Time:</strong> <%= appointment.time %></p>
+            </div>
+        </div>
+        <% }); %>
+    </div>
+</body>
+</html>

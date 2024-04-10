@@ -6,7 +6,7 @@ const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'root123',
-    database: 'seriousmd'
+    database: 'smd_appointments'
 });
 
 router.get('/', (req, res) => {
@@ -16,9 +16,9 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    const { pxid, clinicid, doctorid, apptid, status, type, isVirtual } = req.body;
-    const sql = 'INSERT INTO appointments (pxid, clinicid, doctorid, apptid, status, type, isVirtual) VALUES (?, ?, ?, ?, ?, ?, ?)';
-    const values = [pxid, clinicid, doctorid, apptid, status, type, isVirtual];
+    const { apptid, patient, clinic, doctor, time, status, type } = req.body;
+    const sql = 'INSERT INTO appointments (apptid, patient, clinic, doctor, time, status, type) VALUES (?, ?, ?, ?, ?, ?, ?)';
+    const values = [apptid, patient, clinic, doctor, time, status, type];
 
     db.query(sql, values, (err, result) => {
         if (err) {
