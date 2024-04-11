@@ -1,6 +1,8 @@
 const express = require("express");
 const mysql = require("mysql");
 const bodyParser = require("body-parser");
+const addRouter = require("./routes/addRoute");
+const editRouter = require("./routes/editRoute");
 
 const app = express();
 
@@ -9,7 +11,7 @@ const db = mysql.createConnection({
     port: 20014,
     user: 'root',
     password: 'VDxdc5yWSYNtjv8hXaJ27bP4',
-    database: 'smd_visayas&mindanao' 
+    database: 'smd_appointments' 
   });
 
   db.connect(function(err) {
@@ -34,6 +36,9 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+app.use('/add', addRouter);
+app.use('/edit', editRouter);
+
 
 
 // Fetching Data from Database
@@ -46,7 +51,7 @@ app.get('/', (req, res) => {
             return;
         }
         console.log(rows);
-        res.render('indexV2', {
+        res.render('indexVisayasMindanao', {
             title: 'SeriousMD Database',
             appointments: rows
         });
