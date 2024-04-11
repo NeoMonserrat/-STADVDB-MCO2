@@ -47,7 +47,7 @@ app.get('/', (req, res) => {
     let query = db.query(sql, (err, rows) => {
         if (err) {
             console.error('Error executing query: ' + err.stack);
-            res.status(500).send('Internal Server Error');
+            res.status(500).send('Server Error');
             return;
         }
         console.log(rows);
