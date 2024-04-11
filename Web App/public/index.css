@@ -6,7 +6,7 @@ body {
 }
 
 .container {
-    max-width: 1800px;
+    max-width: 1500px;
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
@@ -23,6 +23,7 @@ body {
 }
 
 .table {
+    font-size: 10px;
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
